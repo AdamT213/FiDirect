@@ -1,0 +1,2 @@
+class ReccuringPaymentsController < ApplicationController
+end

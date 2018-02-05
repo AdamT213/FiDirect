@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  source: MyString
+  status: false
+  pay_date: MyString
+  pay_amount: 1
+  duration: 1
+
+two:
+  source: MyString
+  status: false
+  pay_date: MyString
+  pay_amount: 1
+  duration: 1
