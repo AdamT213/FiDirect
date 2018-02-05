@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205222258) do
+ActiveRecord::Schema.define(version: 20180205231948) do
 
   create_table "assets", force: :cascade do |t|
     t.string "name"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180205222258) do
   create_table "recurring_payments", force: :cascade do |t|
     t.string "source"
     t.boolean "status"
-    t.string "pay_date"
+    t.date "pay_date"
     t.integer "pay_amount"
     t.integer "duration"
     t.integer "bank_account_id"
