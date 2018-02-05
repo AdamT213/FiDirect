@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205213138) do
+ActiveRecord::Schema.define(version: 20180205222258) do
 
   create_table "assets", force: :cascade do |t|
     t.string "name"
@@ -63,7 +63,6 @@ ActiveRecord::Schema.define(version: 20180205213138) do
     t.integer "credit_card_id"
     t.integer "loan_id"
     t.integer "investment_id"
-    t.integer "income_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
