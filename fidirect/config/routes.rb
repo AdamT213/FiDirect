@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :assets
+  resources :investments
+  resources :loans
+  resources :credit_cards
   resources :bank_accounts
   resources :reccuring_payments
   devise_for :users

@@ -3,5 +3,4 @@ class ReccuringPayment < ApplicationRecord
     belongs_to :credit_card 
     belongs_to :investment 
     belongs_to :loan 
-    belongs_to :income
 end
