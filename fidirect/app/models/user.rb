@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :investments 
   has_many :loans 
   has_many :assets 
-  has_many :reccuring_payments, through: :bank_accounts
-  has_many :reccuring_payments, through: :credit_cards
-  has_many :reccuring_payments, through: :investments
-  has_many :reccuring_payments, through: :loans
+  has_many :recurring_payments, through: :bank_accounts
+  has_many :recurring_payments, through: :credit_cards
+  has_many :recurring_payments, through: :investments
+  has_many :recurring_payments, through: :loans
 end
