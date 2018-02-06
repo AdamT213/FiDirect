@@ -1,7 +1,7 @@
 class RecurringPaymentsController < ApplicationController 
     def new
-    @payment = RecurringPayment.new
-  end
+      @payment = RecurringPayment.new
+    end
 
   def create
     @payment = RecurringPayment.create(recurring_payment_params)
