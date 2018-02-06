@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :assets do 
-    resources :recurring_payments
-  end
+  devise_for :users 
+  resources :users, only: :index
+  
+  resources :assets 
+  
   resources :investments do 
     resources :recurring_payments 
   end 
+  
   resources :loans do
     resources :recurring_payments 
   end 
+ 
   resources :credit_cards do
     resources :recurring_payments 
   end
+  
   resources :bank_accounts do 
     resources :recurring_payments
   end
