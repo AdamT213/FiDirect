@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180206180455) do
+ActiveRecord::Schema.define(version: 20180206183950) do
 
   create_table "assets", force: :cascade do |t|
     t.string "name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20180206180455) do
     t.integer "remaining_balance"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "recurring_payments", force: :cascade do |t|
@@ -59,12 +60,13 @@ ActiveRecord::Schema.define(version: 20180206180455) do
     t.date "pay_date"
     t.integer "pay_amount"
     t.integer "duration"
-    t.integer "bank_account_id"
-    t.integer "credit_card_id"
-    t.integer "loan_id"
-    t.integer "investment_id"
+    t.integer "bank_account_id", default: 0
+    t.integer "credit_card_id", default: 0
+    t.integer "loan_id", default: 0
+    t.integer "investment_id", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "payment_frequency"
   end
 
   create_table "users", force: :cascade do |t|

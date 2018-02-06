@@ -665,3 +665,192 @@ Migrating to ChangeLoanInterestRateToFloat (20180206180455)
             FROM sqlite_temp_master
             WHERE name='index_users_on_email' AND type='index'
 [0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNameToLoan (20180206180728)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "loans" ADD "name" varchar[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180206180728"]]
+  [1m[35m (6.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPaymentFrequencyToRecurringPayments (20180206181119)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPaymentFrequencyToRecurringPayments (20180206181119)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPaymentFrequencyToRecurringPayments (20180206181119)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "recurring_payments" ADD "payment_frequency" integer[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180206181119"]]
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mCreditCard Load (0.2ms)[0m  [1m[34mSELECT  "credit_cards".* FROM "credit_cards" WHERE "credit_cards"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AllowNullValuesForRecurringPaymentForeignIDs (20180206181642)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arecurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT NULL, "credit_card_id" integer DEFAULT NULL, "loan_id" integer DEFAULT NULL, "investment_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arecurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "recurring_payments"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "recurring_payments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "recurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT NULL, "credit_card_id" integer DEFAULT NULL, "loan_id" integer DEFAULT NULL, "investment_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "recurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "arecurring_payments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "arecurring_payments"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180206181642"]]
+  [1m[35m (7.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AllowNullValuesForRecurringPaymentForeignIDsContinued (20180206183313)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AllowNullValuesForRecurringPaymentForeignIDsContinued (20180206183313)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AllowNullValuesForRecurringPaymentForeignIDsContinued (20180206183313)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arecurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT NULL, "credit_card_id" integer DEFAULT NULL, "loan_id" integer DEFAULT NULL, "investment_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arecurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "recurring_payments"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "recurring_payments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "recurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT 0, "credit_card_id" integer DEFAULT NULL, "loan_id" integer DEFAULT NULL, "investment_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "recurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "arecurring_payments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arecurring_payments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arecurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT 0, "credit_card_id" integer DEFAULT NULL, "loan_id" integer DEFAULT NULL, "investment_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arecurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "recurring_payments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "recurring_payments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "recurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT 0, "credit_card_id" integer DEFAULT NULL, "loan_id" integer DEFAULT 0, "investment_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "recurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "arecurring_payments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arecurring_payments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arecurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT 0, "credit_card_id" integer DEFAULT NULL, "loan_id" integer DEFAULT 0, "investment_id" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arecurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "recurring_payments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "recurring_payments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "recurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT 0, "credit_card_id" integer DEFAULT NULL, "loan_id" integer DEFAULT 0, "investment_id" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "recurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "arecurring_payments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arecurring_payments"[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180206183313"]]
+  [1m[35m (5.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddDefault0ToCreditCardId (20180206183950)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arecurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT 0, "credit_card_id" integer DEFAULT NULL, "loan_id" integer DEFAULT 0, "investment_id" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arecurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "recurring_payments"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "recurring_payments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "recurring_payments" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "source" varchar DEFAULT NULL, "status" boolean DEFAULT NULL, "pay_date" date DEFAULT NULL, "pay_amount" integer DEFAULT NULL, "duration" integer DEFAULT NULL, "bank_account_id" integer DEFAULT 0, "credit_card_id" integer DEFAULT 0, "loan_id" integer DEFAULT 0, "investment_id" integer DEFAULT 0, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "payment_frequency" integer DEFAULT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[32mINSERT INTO "recurring_payments" ("id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency")
+                     SELECT "id","source","status","pay_date","pay_amount","duration","bank_account_id","credit_card_id","loan_id","investment_id","created_at","updated_at","payment_frequency" FROM "arecurring_payments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arecurring_payments"[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180206183950"]]
+  [1m[35m (7.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
