@@ -9,6 +9,7 @@ class RecurringPayment < ApplicationRecord
     end
 
   def bank_account_name=(name)
+      binding.pry
     bank_account = BankAccount.find_by(name: name)
     if bank_account
       self.bank_account = bank_account

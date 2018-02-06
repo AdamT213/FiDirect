@@ -26,6 +26,8 @@ gem 'thor', '~> 0.19.1'
 
 gem 'foreman', '~> 0.82.0'
 
+gem 'pry'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
