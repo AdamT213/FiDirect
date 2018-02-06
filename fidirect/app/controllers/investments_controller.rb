@@ -14,12 +14,13 @@ class InvestmentsController < ApplicationController
   end
 
   def index
-    @investments = Investment.all
+    @investments = Investment.all 
+    render json @investments
   end 
   
   private
 
   def investment_params
-    params.permit(:id, :name, :value, :user_id)
+    params.permit(:id, :name, :value, :user_id, recurring_payments_attributes: [:source, :status, :pay_amount, :pay_date, :duration])
   end
 end

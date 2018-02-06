@@ -21,6 +21,6 @@ class LoansController < ApplicationController
   private
 
   def loan_params
-    params.permit(:id, :remaining_balance, :interest_rate, :user_id)
+    params.permit(:id, :remaining_balance, :interest_rate, :user_id, recurring_payments_attributes: [:source, :status, :pay_amount, :pay_date, :duration])
   end
 end
