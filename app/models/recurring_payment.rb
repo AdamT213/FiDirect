@@ -1,8 +1,8 @@
 class RecurringPayment < ApplicationRecord
-    belongs_to :bank_account
-    belongs_to :credit_card
-    belongs_to :investment
-    belongs_to :loan
+    belongs_to :bank_account, optional: true
+    belongs_to :credit_card, optional: true 
+    belongs_to :investment, optional: true
+    belongs_to :loan, optional: true
 
     def bank_account_name
         self.try(:bank_account).try(:name)
