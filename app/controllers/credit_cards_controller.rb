@@ -14,8 +14,8 @@ class CreditCardsController < ApplicationController
   end
 
   def index
-    @accounts = CreditCard.all
-    render json: @account
+    @credit_cards = CreditCard.all
+    render json: @credit_cards
   end 
   
   private

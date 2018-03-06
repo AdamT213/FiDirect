@@ -14,8 +14,8 @@ class BankAccountsController < ApplicationController
   end
 
   def index
-    @accounts = BankAccount.all 
-    render json: @accounts
+    @bank_accounts = BankAccount.all 
+    render json: @bank_accounts
   end 
   
   private

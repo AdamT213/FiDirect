@@ -15,7 +15,7 @@ class LoansController < ApplicationController
 
   def index
     @loans = Loan.all 
-    render json @loans
+    render json: @loans
   end 
   
   private
