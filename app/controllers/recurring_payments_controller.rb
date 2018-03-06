@@ -30,6 +30,6 @@ class RecurringPaymentsController < ApplicationController
   private
 
   def recurring_payment_params
-    params.permit(:id, :source, :status, :pay_amount, :pay_date, :duration, bank_account_name, :credit_card_provider, :investment_name, :loan_name )
+    params.permit(:id, :source, :status, :pay_amount, :pay_date, :duration, :bank_account_name, :credit_card_provider, :investment_name, :loan_name )
   end
 end
