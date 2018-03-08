@@ -1637,3 +1637,39 @@ Migrating to CreateRecurringPayments (20180305214222)
             FROM sqlite_temp_master
             WHERE name='index_users_on_email' AND type='index'
 [0m
+  [1m[36mLoan Load (2.1ms)[0m  [1m[34mSELECT  "loans".* FROM "loans" ORDER BY "loans"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mLoan Load (0.3ms)[0m  [1m[34mSELECT  "loans".* FROM "loans" LIMIT ?[0m  [["LIMIT", 11]]
+Started POST "/api/loans" for 10.1.10.143 at 2018-03-08 15:49:52 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by LoansController#create as JSON
+  Parameters: {"name"=>"student loans", "remaining balance"=>"40000", "interest rate"=>".05", "user_id"=>"1"}
+Unpermitted parameters: :name, :remaining balance, :interest rate
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "jake@jake.com"], ["LIMIT", 1]]
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "jake@jake.com"], ["encrypted_password", "$2a$11$1vRqZYoQx9MzZ2b9V3CnNOTuIV6BSEuAaabfMeS5Cv79GWiiQlEzK"], ["created_at", "2018-03-08 20:52:22.204564"], ["updated_at", "2018-03-08 20:52:22.204564"]]
+  [1m[35m (5.2ms)[0m  [1m[36mcommit transaction[0m
+[active_model_serializers] Rendered LoanSerializer with ActiveModelSerializers::Adapter::Attributes (32.22ms)
+Completed 201 Created in 161860ms (Views: 97.8ms | ActiveRecord: 16.8ms)
+
+
+Started POST "/api/loans" for 10.1.10.143 at 2018-03-08 15:53:02 -0500
+Processing by LoansController#create as JSON
+  Parameters: {"name"=>"student loans", "remaining balance"=>"40000", "interest rate"=>".05", "user_id"=>"1"}
+Unpermitted parameters: :name, :remaining balance, :interest rate
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "loans" ("user_id", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["user_id", 1], ["created_at", "2018-03-08 20:53:02.117760"], ["updated_at", "2018-03-08 20:53:02.117760"]]
+  [1m[35m (26.8ms)[0m  [1m[36mcommit transaction[0m
+Unpermitted parameters: :name, :remaining balance, :interest rate
+[active_model_serializers]   [1m[36mRecurringPayment Load (0.5ms)[0m  [1m[34mSELECT "recurring_payments".* FROM "recurring_payments" WHERE "recurring_payments"."loan_id" = ?[0m  [["loan_id", 1]]
+[active_model_serializers] Rendered LoanSerializer with ActiveModelSerializers::Adapter::Attributes (9.81ms)
+Completed 201 Created in 550254ms (Views: 9.7ms | ActiveRecord: 29.8ms)
+
+

@@ -3,8 +3,9 @@ class LoansController < ApplicationController
       @loan = Loan.new 
     end
 
-  def create
-    @loan = Loan.create(loan_params)
+  def create 
+    @loan = Loan.create(loan_params) 
+    binding.pry
     render json: @loan, status: 201
   end
 
@@ -21,6 +22,6 @@ class LoansController < ApplicationController
   private
 
   def loan_params
-    params.permit(:id, :remaining_balance, :interest_rate, :user_id, recurring_payments_attributes: [:source, :status, :pay_amount, :pay_date, :duration])
+    params.permit(:id, :name, :remaining_balance, :interest_rate, :user_id, recurring_payments_attributes: [:source, :status, :pay_amount, :pay_date, :duration])
   end
 end
