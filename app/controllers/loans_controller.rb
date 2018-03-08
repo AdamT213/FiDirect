@@ -5,7 +5,6 @@ class LoansController < ApplicationController
 
   def create 
     @loan = Loan.create(loan_params) 
-    binding.pry
     render json: @loan, status: 201
   end
 
