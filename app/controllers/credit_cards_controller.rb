@@ -20,7 +20,7 @@ class CreditCardsController < ApplicationController
   
   private
 
-  def bank_account_params
-    params.permit(:name, :balance, :user_id, recurring_payments_attributes: [:source, :status, :pay_amount, :pay_date, :duration])
+  def credit_card_params
+    params.permit(:id, :provider, :balance, :interest_rate, :user_id, recurring_payments_attributes: [:source, :status, :pay_amount, :pay_date, :duration])
   end
 end
