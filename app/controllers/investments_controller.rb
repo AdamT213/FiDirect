@@ -16,11 +16,18 @@ class InvestmentsController < ApplicationController
   def index
     @investments = Investment.all 
     render json: @investments
-  end 
+  end  
+
+  def update 
+    @investment = Investment.find(params[:id]) 
+    @investment.update(investment_params) 
+    render json: @investment
+  end
   
   private
 
   def investment_params
-    params.permit(:id, :name, :value, :user_id, recurring_payments_attributes: [:source, :status, :pay_amount, :pay_date, :duration])
+    params.permit(:id, :name, :value, :user_id, :likes,
+    recurring_payments_attributes: [:source, :status, :pay_amount, :pay_date, :duration])
   end
 end
